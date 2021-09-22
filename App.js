@@ -13,13 +13,19 @@ export default function App() {
     ]);
   };
 
+  const deleteGoalHandler = () => {};
+
   return (
     <View style={styles.screen}>
       <GoalInput onAddGoal={addGoalHandler} />
       <FlatList
         keyExtractor={(item) => item.uid}
         data={courseGoals}
-        renderItem={(itemData) => <GoalItem>{itemData.item.value}</GoalItem>}
+        renderItem={(itemData) => (
+          <GoalItem onDelete={deleteGoalHandler}>
+            {itemData.item.value}
+          </GoalItem>
+        )}
       />
     </View>
   );
